@@ -16,7 +16,7 @@
   <body>
     <main>
       <main>
-      
+      <!-- navigation bar for students, courses, and colleges page -->
         <div class="container">
           <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -35,11 +35,12 @@
         <div class = "container">
           <h1 style = "font-size: 40px">Add College</h1>
         </div>
-
+        <!-- container for input fields -->
         <div class = "container">
           <div class = "col-md-6">
             <div class = "card mt-30">
               <div class = "card-body">
+                <!-- input fields for the add_college action -->
                 <form class = "form" action = "/add_college" method = "POST">
                   <label for = "college_code">College Code</label>
                   <input type = "text" name = "college_code" id = "college_code" class = "form-control" placeholder = "e.g. CCS, COET, etc."><br>

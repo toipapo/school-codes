@@ -16,7 +16,7 @@
   <body>
     <main>
       <main>
-      
+        <!-- navigation bar for students, courses, and colleges page -->
         <div class="container">
           <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -35,13 +35,15 @@
         <div class = "container">
           <h1 style = "font-size: 40px">Edit Course</h1>
         </div>
-
+        <!-- loop for displaying input fields content -->
         {% for row in course_info %}
         <div class = "container">
           <div class = "col-md-6">
             <div class = "card mt-30">
               <div class = "card-body">
+                <!-- input fields for edit_course action -->
                 <form class = "form" action = "/edit_course/{{row.course_code}}" method = "POST">
+                    <!-- input fields with pre-existing data displayed -->
                     <label for = "course_code">Course Code</label>
                     <input type = "text" class = "form-control" value = "{{row.course_code}}" disabled>
                     <input type = "hidden" value = "{{row.course_code}}" name = "course_code" id = "course_code" class = "form-control"><br>

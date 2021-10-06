@@ -18,7 +18,7 @@
   <body>
     <main>
       <main>
-      
+        <!-- navigation bar for students, courses, and colleges page -->
         <div class="container">
           <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -33,8 +33,9 @@
             </ul>
           </header>
         </div>
-
+        
         <div class = "container search-table">
+          <!-- search box -->
           <div class = "search-box">
             <div class = "row">
               <div class = "col-md-3">
@@ -44,11 +45,13 @@
                 <input type = "text" id = "searchtext" class = "form-control" placeholder = "Search...">
               </div>
               <div class = col-md-2>
+                <!-- redirect to add_course.html -->
                 <a href = "/add_coursepage" class = "btn btn-dark">Add Course</a>
               </div>
             </div>
           </div>
           <table class = "table table-striped custab">
+            <!-- search table header -->
             <thead>
                 <tr>
                     <th>Course Code</th>
@@ -57,15 +60,18 @@
                     <th width = 100px></th>
                 </tr>
             </thead>
-        
+            <!-- loop for displaying table contents -->
             {% for row in course %}
+            <!-- table contents -->
             <tbody id = "course">
                 <tr>
                     <td>{{row.course_code}}</td>
                     <td>{{row.course_name}}</td>
                     <td>{{row.college_code}}</td>
                     <td>
+                      <!-- redirect to edit_course.html -->
                       <a href = "/edit_coursepage/{{row.course_code}}" class = "btn btn-warning">Edit</a>
+                      <!-- confirm button for delete_course action -->
                       <a href = "/delete_course/{{row.course_code}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this course? It cannot be undone')">Delete</a>
                     </td>
                 </tr>
@@ -73,7 +79,7 @@
             {% endfor %}
           </table>
         </div>
-        
+        <!-- filter script -->
         <script>
           $(document).ready(function(){
             $("#searchtext").on("keyup",function(){
