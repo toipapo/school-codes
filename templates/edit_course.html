@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename = 'css/style.css')}}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <script type = "text/javascript" src = "{{url_for('static', filename = 'js/jquery-3.6.0.min.js')}}"></script>
+
+    <title>Edit Course</title>
+  </head>
+  <body>
+    <main>
+      <main>
+      
+        <div class="container">
+          <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+              <span class="fs-4"><h2>Simple Student Information System</h2></span>
+            </a>
+      
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/" class="nav-link">Students</a></li>
+                <li class="nav-item"><a href="/courses" class="nav-link active" aria-current="page">Courses</a></li>
+                <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
+            </ul>
+          </header>
+        </div>
+
+        <div class = "container">
+          <h1 style = "font-size: 40px">Edit Course</h1>
+        </div>
+
+        {% for row in course_info %}
+        <div class = "container">
+          <div class = "col-md-6">
+            <div class = "card mt-30">
+              <div class = "card-body">
+                <form class = "form" action = "/edit_course/{{row.course_code}}" method = "POST">
+                    <label for = "course_code">Course Code</label>
+                    <input type = "text" class = "form-control" value = "{{row.course_code}}" disabled>
+                    <input type = "hidden" value = "{{row.course_code}}" name = "course_code" id = "course_code" class = "form-control"><br>
+                    <label for = "course_name">Course Name</label>
+                    <input type = "text" value = "{{row.course_name}}" name = "course_name" id = "course_name" class = "form-control" placeholder = "e.g. Bachelor of Science in Information Technology..."><br>
+                    <label for = "college_code">College Code</label>
+                    <input type = "text" value = "{{row.college_code}}" name = "college_code" id = "college_code" class = "form-control" placeholder = "e.g. CCS, COET, etc."><br>
+                  
+                  <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Edit Course">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </main>
+  </body>
+  </html>
