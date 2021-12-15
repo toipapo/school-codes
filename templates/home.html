@@ -27,7 +27,7 @@
             </a>
       
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Students</a></li>
+              <li class="nav-item"><a href="/students" class="nav-link active" aria-current="page">Students</a></li>
               <li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
               <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
             </ul>
@@ -46,7 +46,7 @@
               </div>
               <div class = col-md-2>
                 <!-- redirect to add_student.html -->
-                <a href = "/add_student" class = "btn btn-dark">Add Student</a>
+                <a href = "/students/add_student" class = "btn btn-dark">Add Student</a>
               </div>
             </div>
           </div>
@@ -76,9 +76,9 @@
                     <td>{{row.stud_gender}}</td>
                     <td>
                       <!-- redirect to edit_student.html -->
-                      <a href = "/edit_student/{{row.id_num}}" class = "btn btn-warning">Edit</a>
+                      <a href = "/students/edit_student/{{row.id_num}}" class = "btn btn-warning">Edit</a>
                       <!-- confirm button for delete(student) action -->
-                      <a href = "/delete/{{row.id_num}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this student? It cannot be undone')">Delete</a>
+                      <a href = "/students/delete/{{row.id_num}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this student? It cannot be undone')">Delete</a>
                     </td>
                 </tr>
             </tbody>

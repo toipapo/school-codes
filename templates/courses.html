@@ -46,7 +46,7 @@
               </div>
               <div class = col-md-2>
                 <!-- redirect to add_course.html -->
-                <a href = "/add_coursepage" class = "btn btn-dark">Add Course</a>
+                <a href = "/courses/add_coursepage" class = "btn btn-dark">Add Course</a>
               </div>
             </div>
           </div>
@@ -70,9 +70,9 @@
                     <td>{{row.college_code}}</td>
                     <td>
                       <!-- redirect to edit_course.html -->
-                      <a href = "/edit_coursepage/{{row.course_code}}" class = "btn btn-warning">Edit</a>
+                      <a href = "/courses/edit_coursepage/{{row.course_code}}" class = "btn btn-warning">Edit</a>
                       <!-- confirm button for delete_course action -->
-                      <a href = "/delete_course/{{row.course_code}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this course? It cannot be undone')">Delete</a>
+                      <a href = "/courses/delete_course/{{row.course_code}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this course? It cannot be undone')">Delete</a>
                     </td>
                 </tr>
             </tbody>

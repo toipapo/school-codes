@@ -25,7 +25,7 @@
             </a>
       
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="/" class="nav-link">Students</a></li>
+              <li class="nav-item"><a href="/students" class="nav-link">Students</a></li>
               <li class="nav-item"><a href="/courses" class="nav-link active" aria-current="page">Courses</a></li>
               <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
             </ul>
@@ -41,7 +41,7 @@
             <div class = "card mt-30">
               <div class = "card-body">
                 <!-- input fields for the add_course action -->
-                <form class = "form" action = "/add_course" method = "POST">
+                <form class = "form" action = "/courses/add_course" method = "POST">
                   <label for = "course_code">Course Code</label>
                   <input type = "text" name = "course_code" id = "course_code" class = "form-control" placeholder = "e.g. BSIT, BSBA, etc."><br>
                   <label for = "course_name">Course Name</label>

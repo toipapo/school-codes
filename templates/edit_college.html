@@ -25,7 +25,7 @@
             </a>
       
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link">Students</a></li>
+                <li class="nav-item"><a href="/students" class="nav-link">Students</a></li>
                 <li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
                 <li class="nav-item"><a href="/colleges" class="nav-link active" aria-current="page">Colleges</a></li>
             </ul>
@@ -42,7 +42,7 @@
             <div class = "card mt-30">
               <div class = "card-body">
                 <!-- input fields for edit_college action -->
-                <form class = "form" action = "/edit_college/{{row.college_code}}" method = "POST">
+                <form class = "form" action = "/colleges/edit_college/{{row.college_code}}" method = "POST">
                     <!-- input fields with pre-existing data displayed -->
                     <label for = "college_code">College Code</label>
                     <input type = "text" class = "form-control" value = "{{row.college_code}}" disabled>

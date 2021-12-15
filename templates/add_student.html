@@ -25,7 +25,7 @@
             </a>
       
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Students</a></li>
+              <li class="nav-item"><a href="/students" class="nav-link active" aria-current="page">Students</a></li>
               <li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
               <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
             </ul>
@@ -41,7 +41,7 @@
             <div class = "card mt-30">
               <div class = "card-body">
                 <!-- input fields for add_student action -->
-                <form class = "form" action = "/add" method = "POST">
+                <form class = "form" action = "/students/add" method = "POST">
                   <label for = "id_num">ID Number</label>
                   <input type = "text" name = "id_num" id = "id_num" class = "form-control" placeholder = "YYYY-NNNN"><br>
                   <label for = "fname">First Name</label>
