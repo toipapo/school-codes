@@ -3,9 +3,10 @@ from flask_mysqldb import MySQLdb
 from flask.helpers import url_for
 from werkzeug.utils import redirect
 from app import mysql
+import cloudinary
+import cloudinary.uploader
 
 students = Blueprint('students', __name__, url_prefix='/students')
-
 
 # function for add_student page
 @students.route("/add_student")
@@ -22,6 +23,10 @@ def edit_student(id_num):
     cursor.close()
     return render_template("edit_student.html",student_info=data)
 
+def uploadImage(image):
+    uploadInput = cloudinary.uploader.upload(image, folder = "SSIS - profiles")
+    return uploadInput['secure_url']
+
 # function for add(students) action
 @students.route("/add", methods = ['POST'])
 def add():
@@ -33,10 +38,14 @@ def add():
         course = request.form['course']
         yearlvl = request.form['yearlvl']
         gender = request.form['gender']
+        image = request.files['file']
+
+        stud_img_url = uploadImage(image)
+        print(image)
 
         #plug inputs into database
         cursor = mysql.connection.cursor()
-        cursor.execute('''INSERT INTO student VALUES(%s,%s,%s,%s,%s,%s)''',(id_num, fname, lname, course, yearlvl, gender))
+        cursor.execute('''INSERT INTO student VALUES(%s,%s,%s,%s,%s,%s)''',(id_num, fname, lname, course, yearlvl, gender, stud_img_url, ))
         mysql.connection.commit()
         cursor.close()
 
@@ -72,3 +81,5 @@ def edit(id_num):
         cursor.close()
 
         return redirect(url_for("index"))
+
+

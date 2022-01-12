@@ -25,7 +25,7 @@
             </a>
       
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="/students" class="nav-link active" aria-current="page">Students</a></li>
+              <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Students</a></li>
               <li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
               <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
             </ul>
@@ -41,7 +41,7 @@
             <div class = "card mt-30">
               <div class = "card-body">
                 <!-- input fields for add_student action -->
-                <form class = "form" action = "/students/add" method = "POST">
+                <form class = "form" action = "/students/add" method = "POST" enctype="multipart/form-data">
                   <label for = "id_num">ID Number</label>
                   <input type = "text" name = "id_num" id = "id_num" class = "form-control" placeholder = "YYYY-NNNN"><br>
                   <label for = "fname">First Name</label>
@@ -54,6 +54,8 @@
                   <input type = "number" name = "yearlvl" id = "yearlvl" class = "form-control"><br>
                   <label for = "course">Gender</label>
                   <input type = "text" name = "gender" id = "gender" class = "form-control" placeholder = "Male or Female"><br>
+                  <input type = "image" name = "file" id = "file" accept = ".jpg, .jpeg, .png" class = "btn btn-block btn-lg" value = "Upload Image"><br>
+                  <br>
                   
                   <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Add Student">
                 </form>

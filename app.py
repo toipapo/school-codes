@@ -1,5 +1,8 @@
 from flask import Flask, render_template
 from flask_mysqldb import MySQL, MySQLdb
+import cloudinary
+import cloudinary.uploader
+
 
 app = Flask(__name__)
 
@@ -8,6 +11,12 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'SSIS'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+cloudinary.config(
+    CLOUD_NAME = 'dglj9023b',
+    API_KEY = '115467398695897',
+    API_SECRET = '3tS8qm3H5BdgSmbfmvkdTKotAlk'
+)
 
 mysql = MySQL(app)
 
