@@ -13,9 +13,9 @@ app.config['MYSQL_DB'] = 'SSIS'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 cloudinary.config(
-    CLOUD_NAME = 'dglj9023b',
-    API_KEY = '115467398695897',
-    API_SECRET = '3tS8qm3H5BdgSmbfmvkdTKotAlk'
+    cloud_name = 'dglj9023b',
+    api_key = '115467398695897',
+    api_secret = '3tS8qm3H5BdgSmbfmvkdTKotAlk'
 )
 
 mysql = MySQL(app)

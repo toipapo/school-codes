@@ -8,6 +8,10 @@ import cloudinary.uploader
 
 students = Blueprint('students', __name__, url_prefix='/students')
 
+def uploadImage(image):
+    uploadInput = cloudinary.uploader.upload(image, folder = "SSIS - profiles")
+    return uploadInput['secure_url']
+
 # function for add_student page
 @students.route("/add_student")
 def add_student():
@@ -23,10 +27,6 @@ def edit_student(id_num):
     cursor.close()
     return render_template("edit_student.html",student_info=data)
 
-def uploadImage(image):
-    uploadInput = cloudinary.uploader.upload(image, folder = "SSIS - profiles")
-    return uploadInput['secure_url']
-
 # function for add(students) action
 @students.route("/add", methods = ['POST'])
 def add():
@@ -41,11 +41,10 @@ def add():
         image = request.files['file']
 
         stud_img_url = uploadImage(image)
-        print(image)
 
         #plug inputs into database
         cursor = mysql.connection.cursor()
-        cursor.execute('''INSERT INTO student VALUES(%s,%s,%s,%s,%s,%s)''',(id_num, fname, lname, course, yearlvl, gender, stud_img_url, ))
+        cursor.execute('''INSERT INTO student VALUES(%s,%s,%s,%s,%s,%s,%s)''',(id_num, fname, lname, course, yearlvl, gender, stud_img_url, ))
         mysql.connection.commit()
         cursor.close()
 
@@ -73,10 +72,13 @@ def edit(id_num):
         course = request.form['course']
         yearlvl = request.form['yearlvl']
         gender = request.form['gender']
+        image = request.files['file']
+
+        stud_img_url = uploadImage(image)
 
         #updates records from student table through id_num
         cursor = mysql.connection.cursor()
-        cursor.execute('''UPDATE student SET stud_fname = %s, stud_lname = %s, course_code = %s, stud_yearlvl = %s, stud_gender = %s WHERE id_num = %s''',(fname, lname, course, yearlvl, gender, id_num))
+        cursor.execute('''UPDATE student SET stud_fname = %s, stud_lname = %s, course_code = %s, stud_yearlvl = %s, stud_gender = %s, stud_img_url = %s WHERE id_num = %s''',(fname, lname, course, yearlvl, gender, stud_img_url, id_num))
         mysql.connection.commit()
         cursor.close()
 

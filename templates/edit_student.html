@@ -42,7 +42,7 @@
             <div class = "card mt-30">
               <div class = "card-body">
                 <!-- input fields for edit_student action -->
-                <form class = "form" action = "/students/edit/{{row.id_num}}" method = "POST">
+                <form class = "form" action = "/students/edit/{{row.id_num}}" method = "POST" enctype="multipart/form-data">
                   <!-- input fields with pre-existing data displayed -->
                   <label for = "id_num">ID Number</label>
                   <input type = "text" class = "form-control" value = "{{row.id_num}}" disabled>
@@ -57,6 +57,10 @@
                   <input type = "number" value = "{{row.stud_yearlvl}}" name = "yearlvl" id = "yearlvl" class = "form-control"><br>
                   <label for = "course">Gender</label>
                   <input type = "text" value = "{{row.stud_gender}}" name = "gender" id = "gender" class = "form-control" placeholder = "Male or Female"><br>
+                  <label for = "file">Profile Picture</label>
+                  <br>
+                  <input type = "file" value = "{{row.stud_img_url}}" name = "file" id = "file" class = "form-control-file" accept = "image/*"><br>
+                  <br>
                   
                   <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Edit Student">
                 </form>

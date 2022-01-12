@@ -54,6 +54,7 @@
             <!-- search table header -->
             <thead>
                 <tr>
+                    <th>Profile Picture</th>
                     <th>ID Number</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -68,6 +69,7 @@
             <!-- table contents -->
             <tbody id = "student">
                 <tr>
+                    <td><a href="{{row.stud_img_url}}" target="_blank"><img src = "{{row.stud_img_url}}" class="img-thumbnail" style="height: 150px; width: 150px; object-fit: cover;"></a></td>
                     <td>{{row.id_num}}</td>
                     <td>{{row.stud_fname}}</td>
                     <td>{{row.stud_lname}}</td>
@@ -77,6 +79,7 @@
                     <td>
                       <!-- redirect to edit_student.html -->
                       <a href = "/students/edit_student/{{row.id_num}}" class = "btn btn-warning">Edit</a>
+                      <br><br><br>
                       <!-- confirm button for delete(student) action -->
                       <a href = "/students/delete/{{row.id_num}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this student? It cannot be undone')">Delete</a>
                     </td>
