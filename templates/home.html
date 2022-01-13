@@ -78,10 +78,10 @@
                     <td>{{row.stud_gender}}</td>
                     <td>
                       <!-- redirect to edit_student.html -->
-                      <a href = "/students/edit_student/{{row.id_num}}" class = "btn btn-warning">Edit</a>
+                      <a href = "/students/edit_student/{{row.id_num}}" class = "btn btn-warning customwidth">Edit</a>
                       <br><br><br>
                       <!-- confirm button for delete(student) action -->
-                      <a href = "/students/delete/{{row.id_num}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this student? It cannot be undone')">Delete</a>
+                      <a href = "/students/delete/{{row.id_num}}" class = "btn btn-danger customwidth" onclick="return confirm('Are you sure about deleting this student? It cannot be undone')">Delete</a>
                     </td>
                 </tr>
             </tbody>

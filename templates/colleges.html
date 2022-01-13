@@ -68,9 +68,10 @@
                     <td>{{row.college_name}}</td>
                     <td>
                       <!-- redirect to edit_college.html -->
-                      <a href = "/colleges/edit_collegepage/{{row.college_code}}" class = "btn btn-warning">Edit</a>
+                      <a href = "/colleges/edit_collegepage/{{row.college_code}}" class = "btn btn-warning customwidth">Edit</a>
+                      <br><br>
                       <!-- confirm button for delete_college action -->
-                      <a href = "/colleges/delete_college/{{row.college_code}}" class = "btn btn-danger" onclick="return confirm('Are you sure about deleting this college? It cannot be undone')">Delete</a>
+                      <a href = "/colleges/delete_college/{{row.college_code}}" class = "btn btn-danger customwidth" onclick="return confirm('Are you sure about deleting this college? It cannot be undone')">Delete</a>
                     </td>
                 </tr>
             </tbody>

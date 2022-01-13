@@ -22,3 +22,7 @@ select{
     border: 1px solid black;
     padding: 1%;
 }
+
+.customwidth{
+    width: 75px !important;
+}
