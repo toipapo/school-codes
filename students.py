@@ -15,8 +15,12 @@ def uploadImage(image):
 # function for add_student page
 @students.route("/add_student")
 def add_student():
+    cursor = mysql.connection.cursor()
+    cursor.execute('''SELECT * FROM course''')
+    data = cursor.fetchall()
+    cursor.close()
     title = 'Add Student'
-    return render_template("add_student.html", title=title)
+    return render_template("add_student.html",course_select = data, title=title)
 
 # function for edit_student page
 @students.route("/edit_student/<string:id_num>")
@@ -26,8 +30,12 @@ def edit_student(id_num):
     cursor = mysql.connection.cursor()
     cursor.execute('''SELECT * FROM student WHERE id_num = %s''',(id_num,))
     data = cursor.fetchall()
+
+    cursor.execute('''SELECT * FROM course''')
+    course_data = cursor.fetchall()
+
     cursor.close()
-    return render_template("edit_student.html",student_info=data, title=title)
+    return render_template("edit_student.html",student_info=data, course_select = course_data, title=title)
 
 # function for add(students) action
 @students.route("/add", methods = ['POST'])

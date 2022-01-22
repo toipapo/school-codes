@@ -27,11 +27,20 @@
           <label for = "lname">Last Name</label>
           <input type = "text" value = "{{row.stud_lname}}" name = "lname" id = "lname" class = "form-control"><br>
           <label for = "course">Course Code</label>
-          <input type = "text" value = "{{row.course_code}}" name = "course" id = "course" class = "form-control" placeholder = "e.g. BSIT, BSCE, etc."><br>
+          <select name = "course" id = "course" class = "form-control selectpicker">
+            <option selected value = "{{row.course_code}}">{{row.course_code}}</option>
+            {% for course in course_select %}
+            <option value = "{{course['course_code']}}">{{course['course_code']}} - {{course['course_name']}}</option>
+            {% endfor %}
+          </select><br>
           <label for = "yearlvl">Year Level</label>
-          <input type = "number" value = "{{row.stud_yearlvl}}" name = "yearlvl" id = "yearlvl" class = "form-control"><br>
+          <input type = "number" value = "{{row.stud_yearlvl}}" name = "yearlvl" id = "yearlvl" class = "form-control" min = '0' max = '5'><br>
           <label for = "gender">Gender</label>
-          <input type = "text" value = "{{row.stud_gender}}" name = "gender" id = "gender" class = "form-control" placeholder = "Male or Female"><br>
+          <select name = "gender" id = "gender" class = "form-control selectpicker">
+            <option selected value = "{{row.stud_gender}}">{{row.stud_gender}}</option>
+            <option value = "Male">Male</option>
+            <option value = "Female">Female</option>
+          </select><br>
           <label for = "file">Profile Picture</label>
           <br>
           <input type = "file" value = "{{row.stud_img_url}}" name = "file" id = "file" class = "form-control-file" accept = "image/*"><br>

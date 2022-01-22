@@ -51,7 +51,7 @@ def add_college():
         mysql.connection.commit()
         cursor.close()
 
-        return redirect(url_for("colleges"))
+        return redirect(url_for("colleges.collegeshome"))
 
 #function for delete_college action
 @colleges.route("/delete_college/<string:college_code>", methods = ['GET'])
@@ -62,7 +62,7 @@ def delete_college(college_code):
         mysql.connection.commit()
         cursor.close()
 
-        return redirect(url_for("colleges"))
+        return redirect(url_for("colleges.collegeshome"))
 
 #function for edit_college action
 @colleges.route("/edit_college/<string:college_code>", methods = ['POST'])
@@ -78,4 +78,4 @@ def edit_college(college_code):
         mysql.connection.commit()
         cursor.close()
 
-        return redirect(url_for("colleges"))
+        return redirect(url_for("colleges.collegeshome"))

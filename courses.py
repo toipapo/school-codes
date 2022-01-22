@@ -24,8 +24,12 @@ def courseshome():
 # function for add_course page
 @courses.route("/add_coursepage")
 def add_coursepage():
+    cursor = mysql.connection.cursor()
+    cursor.execute('''SELECT * FROM college''')
+    data = cursor.fetchall()
+    cursor.close()
     title = 'Add Course'
-    return render_template("add_course.html", title=title)
+    return render_template("add_course.html",college_select=data, title=title)
 
 # function for edit_course page
 @courses.route("/edit_coursepage/<string:course_code>")
@@ -35,8 +39,12 @@ def edit_coursepage(course_code):
     cursor = mysql.connection.cursor()
     cursor.execute('''SELECT * FROM course WHERE course_code = %s''',(course_code,))
     data = cursor.fetchall()
+
+    cursor.execute('''SELECT * FROM college''')
+    college_data = cursor.fetchall()
+
     cursor.close()
-    return render_template("edit_course.html",course_info=data, title=title)
+    return render_template("edit_course.html",course_info=data, college_select=college_data, title=title)
 
 #function for add_course action
 @courses.route("/add_course", methods = ['POST'])
@@ -53,7 +61,7 @@ def add_course():
         mysql.connection.commit()
         cursor.close()
 
-        return redirect(url_for("courses"))
+        return redirect(url_for("courses.courseshome"))
 
 #function for delete_course action
 @courses.route("/delete_course/<string:course_code>", methods = ['GET'])
@@ -64,7 +72,7 @@ def delete_course(course_code):
         mysql.connection.commit()
         cursor.close()
 
-        return redirect(url_for("courses"))
+        return redirect(url_for("courses.courseshome"))
 
 #function for edit_course action
 @courses.route("/edit_course/<string:course_code>", methods = ['POST'])
@@ -81,4 +89,4 @@ def edit_course(course_code):
         mysql.connection.commit()
         cursor.close()
 
-        return redirect(url_for("courses"))
+        return redirect(url_for("courses.courseshome"))
