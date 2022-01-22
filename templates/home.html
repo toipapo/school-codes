@@ -1,104 +1,75 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base_header.html' %}
 
-    <link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename = 'css/style.css')}}">
+{% block navlinks %}
+<li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Students</a></li>
+<li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
+<li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
+{% endblock %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src = "{{url_for('static', filename = 'js/jquery-3.6.0.min.js')}}"></script>
-    
-
-    <title>Students</title>
-
-  </head>
-  <body>
-    <main>
-      <main>
-        <!-- navigation bar for students, courses, and colleges page -->
-        <div class="container">
-          <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-              <span class="fs-4"><h2>Simple Student Information System</h2></span>
-            </a>
-      
-            <ul class="nav nav-pills">
-              <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Students</a></li>
-              <li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
-              <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
-            </ul>
-          </header>
-        </div>
-        
-        <div class = "container search-table">
-          <!-- search box -->
-          <div class = "search-box">
-            <div class = "row">
-              <div class = "col-md-3">
-                <h3>Search for Student</h3>
-              </div>
-              <div class = "col-md-7">
-                <input type = "text" id = "searchtext" class = "form-control" placeholder = "Search...">
-              </div>
-              <div class = col-md-2>
-                <!-- redirect to add_student.html -->
-                <a href = "/students/add_student" class = "btn btn-dark">Add Student</a>
-              </div>
-            </div>
-          </div>
-          <table class = "table table-striped custab">
-            <!-- search table header -->
-            <thead>
-                <tr>
-                    <th>Profile Picture</th>
-                    <th>ID Number</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Course</th>
-                    <th>Year Level</th>
-                    <th>Gender</th>
-                    <th width = 100px></th>
-                </tr>
-            </thead>
-            <!-- loop for displaying table contents -->
-            {% for row in student %}
-            <!-- table contents -->
-            <tbody id = "student">
-                <tr>
-                    <td><a href="{{row.stud_img_url}}" target="_blank"><img src = "{{row.stud_img_url}}" class="img-thumbnail" style="height: 150px; width: 150px; object-fit: cover;"></a></td>
-                    <td>{{row.id_num}}</td>
-                    <td>{{row.stud_fname}}</td>
-                    <td>{{row.stud_lname}}</td>
-                    <td>{{row.course_code}}</td>
-                    <td>{{row.stud_yearlvl}}</td>
-                    <td>{{row.stud_gender}}</td>
-                    <td>
-                      <!-- redirect to edit_student.html -->
-                      <a href = "/students/edit_student/{{row.id_num}}" class = "btn btn-warning customwidth">Edit</a>
-                      <br><br><br>
-                      <!-- confirm button for delete(student) action -->
-                      <a href = "/students/delete/{{row.id_num}}" class = "btn btn-danger customwidth" onclick="return confirm('Are you sure about deleting this student? It cannot be undone')">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-            {% endfor %}
-          </table>
-        </div>
-        <!-- filter script -->
-        <script>
-          $(document).ready(function(){
-            $("#searchtext").on("keyup",function(){
-              var value = $(this).val().toLowerCase();
-              $("#student tr").filter(function(){
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-              });
-            });
-          });
-        </script>
-    </main>
-  </body>
-  </html>
+{% block content %}
+<div class = "container search-table">
+  <!-- search box -->
+  <div class = "search-box">
+    <div class = "row">
+      <div class = "col-md-3">
+        <h3>Search for Student</h3>
+      </div>
+      <div class = "col-md-7">
+        <input type = "text" id = "searchtext" class = "form-control" placeholder = "Search...">
+      </div>
+      <div class = col-md-2>
+        <!-- redirect to add_student.html -->
+        <a href = "/students/add_student" class = "btn btn-dark">Add Student</a>
+      </div>
+    </div>
+  </div>
+  <table class = "table table-striped custab">
+    <!-- search table header -->
+    <thead>
+        <tr>
+            <th>Profile Picture</th>
+            <th>ID Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Course</th>
+            <th>Year Level</th>
+            <th>Gender</th>
+            <th width = 100px></th>
+        </tr>
+    </thead>
+    <!-- loop for displaying table contents -->
+    {% for row in student %}
+    <!-- table contents -->
+    <tbody id = "student">
+        <tr>
+            <td><a href="{{row.stud_img_url}}" target="_blank"><img src = "{{row.stud_img_url}}" class="img-thumbnail" style="height: 150px; width: 150px; object-fit: cover;"></a></td>
+            <td>{{row.id_num}}</td>
+            <td>{{row.stud_fname}}</td>
+            <td>{{row.stud_lname}}</td>
+            <td>{{row.course_code}}</td>
+            <td>{{row.stud_yearlvl}}</td>
+            <td>{{row.stud_gender}}</td>
+            <td>
+              <!-- redirect to edit_student.html -->
+              <a href = "/students/edit_student/{{row.id_num}}" class = "btn btn-warning customwidth">Edit</a>
+              <br><br><br>
+              <!-- confirm button for delete(student) action -->
+              <a href = "/students/delete/{{row.id_num}}" class = "btn btn-danger customwidth" onclick="return confirm('Are you sure about deleting this student? It cannot be undone')">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+<!-- filter script -->
+<script>
+  $(document).ready(function(){
+    $("#searchtext").on("keyup",function(){
+      var value = $(this).val().toLowerCase();
+      $("#student tr").filter(function(){
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+{% endblock %}

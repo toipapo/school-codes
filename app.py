@@ -33,13 +33,14 @@ app.register_blueprint(colleges)
 # function for students homepage
 @app.route("/")
 def index():
+    title = 'Students'
     try:
         #load data from student table into student homepage
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute("SELECT * FROM student ORDER BY id_num")
         data = cursor.fetchall()
         print(data)
-        return render_template("home.html", student=data)
+        return render_template("home.html", student=data, title=title)
     
     except Exception as e:
         return str(e)

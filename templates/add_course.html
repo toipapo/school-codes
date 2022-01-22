@@ -1,61 +1,33 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base_header.html' %}
 
-    <link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename = 'css/style.css')}}">
+{% block navlinks %}
+<li class="nav-item"><a href="/" class="nav-link">Students</a></li>
+<li class="nav-item"><a href="/courses" class="nav-link active" aria-current="page">Courses</a></li>
+<li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
+{% endblock %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src = "{{url_for('static', filename = 'js/jquery-3.6.0.min.js')}}"></script>
-
-    <title>Add Course</title>
-  </head>
-  <body>
-    <main>
-      <main>
-        <!-- navigation bar for students, courses, and colleges page -->
-        <div class="container">
-          <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-              <span class="fs-4"><h2>Simple Student Information System</h2></span>
-            </a>
-      
-            <ul class="nav nav-pills">
-              <li class="nav-item"><a href="/" class="nav-link">Students</a></li>
-              <li class="nav-item"><a href="/courses" class="nav-link active" aria-current="page">Courses</a></li>
-              <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
-            </ul>
-          </header>
-        </div>
-
-        <div class = "container">
-          <h1 style = "font-size: 40px">Add Course</h1>
-        </div>
-        <!-- container for input fields -->
-        <div class = "container">
-          <div class = "col-md-6">
-            <div class = "card mt-30">
-              <div class = "card-body">
-                <!-- input fields for the add_course action -->
-                <form class = "form" action = "/courses/add_course" method = "POST">
-                  <label for = "course_code">Course Code</label>
-                  <input type = "text" name = "course_code" id = "course_code" class = "form-control" placeholder = "e.g. BSIT, BSBA, etc."><br>
-                  <label for = "course_name">Course Name</label>
-                  <input type = "text" name = "course_name" id = "course_name" class = "form-control" placeholder = "e.g. Bachelor of Science in Information Technology..."><br>
-                  <label for = "college_code">College Code</label>
-                  <input type = "text" name = "college_code" id = "college_code" class = "form-control" placeholder = "e.g. CCS, COET, etc."><br>
-                  
-                  <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Add Course">
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-    </main>
-  </body>
-  </html>
+{% block content %}
+<div class = "container">
+  <h1 style = "font-size: 40px">Add Course</h1>
+</div>
+<!-- container for input fields -->
+<div class = "container">
+  <div class = "col-md-6">
+    <div class = "card mt-30">
+      <div class = "card-body">
+        <!-- input fields for the add_course action -->
+        <form class = "form" action = "/courses/add_course" method = "POST">
+          <label for = "course_code">Course Code</label>
+          <input type = "text" name = "course_code" id = "course_code" class = "form-control" placeholder = "e.g. BSIT, BSBA, etc."><br>
+          <label for = "course_name">Course Name</label>
+          <input type = "text" name = "course_name" id = "course_name" class = "form-control" placeholder = "e.g. Bachelor of Science in Information Technology..."><br>
+          <label for = "college_code">College Code</label>
+          <input type = "text" name = "college_code" id = "college_code" class = "form-control" placeholder = "e.g. CCS, COET, etc."><br>
+          
+          <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Add Course">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

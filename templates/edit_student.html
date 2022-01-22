@@ -1,74 +1,47 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base_header.html' %}
 
-    <link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename = 'css/style.css')}}">
+{% block navlinks %}
+<li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Students</a></li>
+<li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
+<li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
+{% endblock %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src = "{{url_for('static', filename = 'js/jquery-3.6.0.min.js')}}"></script>
-
-    <title>Edit Student</title>
-  </head>
-  <body>
-    <main>
-      <main>
-        <!-- navigation bar for students, courses, and colleges page -->
-        <div class="container">
-          <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-              <span class="fs-4"><h2>Simple Student Information System</h2></span>
-            </a>
-      
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Students</a></li>
-                <li class="nav-item"><a href="/courses" class="nav-link">Courses</a></li>
-                <li class="nav-item"><a href="/colleges" class="nav-link">Colleges</a></li>
-            </ul>
-          </header>
-        </div>
-
-        <div class = "container">
-          <h1 style = "font-size: 40px">Edit Student</h1>
-        </div>
-        <!-- loop for displaying input fields content -->
-        {% for row in student_info %}
-        <div class = "container">
-          <div class = "col-md-6">
-            <div class = "card mt-30">
-              <div class = "card-body">
-                <!-- input fields for edit_student action -->
-                <form class = "form" action = "/students/edit/{{row.id_num}}" method = "POST" enctype="multipart/form-data">
-                  <!-- input fields with pre-existing data displayed -->
-                  <label for = "id_num">ID Number</label>
-                  <input type = "text" class = "form-control" value = "{{row.id_num}}" disabled>
-                  <input type = "hidden" value = "{{row.id_num}}" name = "id_num" id = "id_num" class = "form-control"><br>
-                  <label for = "fname">First Name</label>
-                  <input type = "text" value = "{{row.stud_fname}}" name = "fname" id = "fname" class = "form-control"><br>
-                  <label for = "lname">Last Name</label>
-                  <input type = "text" value = "{{row.stud_lname}}" name = "lname" id = "lname" class = "form-control"><br>
-                  <label for = "course">Course Code</label>
-                  <input type = "text" value = "{{row.course_code}}" name = "course" id = "course" class = "form-control" placeholder = "e.g. BSIT, BSCE, etc."><br>
-                  <label for = "yearlvl">Year Level</label>
-                  <input type = "number" value = "{{row.stud_yearlvl}}" name = "yearlvl" id = "yearlvl" class = "form-control"><br>
-                  <label for = "gender">Gender</label>
-                  <input type = "text" value = "{{row.stud_gender}}" name = "gender" id = "gender" class = "form-control" placeholder = "Male or Female"><br>
-                  <label for = "file">Profile Picture</label>
-                  <br>
-                  <input type = "file" value = "{{row.stud_img_url}}" name = "file" id = "file" class = "form-control-file" accept = "image/*"><br>
-                  <br>
-                  
-                  <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Edit Student">
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-    </main>
-  </body>
-  </html>
+{% block content %}
+<div class = "container">
+  <h1 style = "font-size: 40px">Edit Student</h1>
+</div>
+<!-- loop for displaying input fields content -->
+{% for row in student_info %}
+<div class = "container">
+  <div class = "col-md-6">
+    <div class = "card mt-30">
+      <div class = "card-body">
+        <!-- input fields for edit_student action -->
+        <form class = "form" action = "/students/edit/{{row.id_num}}" method = "POST" enctype="multipart/form-data">
+          <!-- input fields with pre-existing data displayed -->
+          <label for = "id_num">ID Number</label>
+          <input type = "text" class = "form-control" value = "{{row.id_num}}" disabled>
+          <input type = "hidden" value = "{{row.id_num}}" name = "id_num" id = "id_num" class = "form-control"><br>
+          <label for = "fname">First Name</label>
+          <input type = "text" value = "{{row.stud_fname}}" name = "fname" id = "fname" class = "form-control"><br>
+          <label for = "lname">Last Name</label>
+          <input type = "text" value = "{{row.stud_lname}}" name = "lname" id = "lname" class = "form-control"><br>
+          <label for = "course">Course Code</label>
+          <input type = "text" value = "{{row.course_code}}" name = "course" id = "course" class = "form-control" placeholder = "e.g. BSIT, BSCE, etc."><br>
+          <label for = "yearlvl">Year Level</label>
+          <input type = "number" value = "{{row.stud_yearlvl}}" name = "yearlvl" id = "yearlvl" class = "form-control"><br>
+          <label for = "gender">Gender</label>
+          <input type = "text" value = "{{row.stud_gender}}" name = "gender" id = "gender" class = "form-control" placeholder = "Male or Female"><br>
+          <label for = "file">Profile Picture</label>
+          <br>
+          <input type = "file" value = "{{row.stud_img_url}}" name = "file" id = "file" class = "form-control-file" accept = "image/*"><br>
+          <br>
+          
+          <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Edit Student">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

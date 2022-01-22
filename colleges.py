@@ -9,12 +9,13 @@ colleges = Blueprint('colleges', __name__, url_prefix='/colleges')
 # function for colleges homepage
 @colleges.route("/")
 def collegeshome():
+    title = 'Colleges'
     try:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute("SELECT * FROM college ORDER BY college_code")
         data = cursor.fetchall()
         print(data)
-        return render_template("colleges.html", college=data)
+        return render_template("colleges.html", college=data, title=title)
     
     except Exception as e:
         return str(e)
@@ -22,17 +23,19 @@ def collegeshome():
 # function for add_college page
 @colleges.route("/add_collegepage")
 def add_collegepage():
-    return render_template("add_college.html")
+    title = 'Add College'
+    return render_template("add_college.html", title=title)
 
 # function for edit_college page
 @colleges.route("/edit_collegepage/<string:college_code>")
 def edit_collegepage(college_code):
+    title = 'Edit College'
     # loads data from college table into fields to be edited
     cursor = mysql.connection.cursor()
     cursor.execute('''SELECT * FROM college WHERE college_code = %s''',(college_code,))
     data = cursor.fetchall()
     cursor.close()
-    return render_template("edit_college.html",college_info=data)
+    return render_template("edit_college.html",college_info=data, title=title)
 
 #function for add_college action
 @colleges.route("/add_college", methods = ['POST'])
