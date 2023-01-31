@@ -18,9 +18,9 @@
         <!-- input fields for the add_college action -->
         <form class = "form" action = "/colleges/add_college" method = "POST">
           <label for = "college_code">College Code</label>
-          <input type = "text" name = "college_code" id = "college_code" class = "form-control" placeholder = "e.g. CCS, COET, etc."><br>
+          <input type = "text" name = "college_code" id = "college_code" class = "form-control" placeholder = "e.g. CCS, COET, etc." required><br>
           <label for = "college_name">College Name</label>
-          <input type = "text" name = "college_name" id = "college_name" class = "form-control" placeholder = "e.g. College of Computer Studies..."><br>
+          <input type = "text" name = "college_name" id = "college_name" class = "form-control" placeholder = "e.g. College of Computer Studies..." required><br>
 
           <input type = "submit" class = "btn btn-primary btn-block btn-lg" value = "Add College">
         </form>
